@@ -52,5 +52,19 @@ class TestBase(unittest.TestCase):
                          'Unexpected output: {}'.format(formatted_value))
 
 
+class TestPythonTimestampFormatter(TestBase):
+    formatter = import_module('python-timestamp.formatter')
+    value = "1651032779850"
+    expected_value = "2022-04-27 12:12:59.850000"
+
+    def call_formatter(self):
+        self.formatter.TimestampFormatter().main('decode')
+
+    def test_timestamp_formatter(self):
+        key = 'format_demo_timestamp'
+        self.db.set(key, self.value)
+        self.check_formatting(self.db.get(key))
+
+
 if __name__ == '__main__':
     unittest.main()
