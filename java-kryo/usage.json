@@ -1,0 +1,1 @@
+["java", "-Djdk.module.illegalAccess=deny", "-cp", "./*", "org.javalover123.resp.App", "package.class"]
